@@ -6,7 +6,7 @@
   `goose -dir ./migrations up`
 ## run app
     `go run cmd/main.go`
-#to run through docker
+# to run through docker
 `docker compose up`
 however there are connection issues between db and app so run locally
 Sorry

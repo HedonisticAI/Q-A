@@ -8,5 +8,5 @@
     `go run cmd/main.go`
 # to run through docker
 `docker compose up`
-however there are connection issues between db and app so run locally
+## however there are connection issues between db and app so run locally
 Sorry

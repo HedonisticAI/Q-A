@@ -1,0 +1,12 @@
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PWD}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+  app:
+    image: golang:latest

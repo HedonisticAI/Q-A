@@ -25,10 +25,14 @@ func NewAnsRepo(DB *postgresql.DB, Log logger.Logger) *AnswersRepo {
 	return &AnswersRepo{DB: DB, Logger: Log}
 }
 
-func (A *AnswersRepo) DeleteByID(ID int) error {
+func (A *AnswersRepo) DeleteByID(ID uint) error {
 	ctx := context.Background()
 	rows, err := gorm.G[answers.Answer](A.DB.DB).Where("id = ?", ID).Delete(ctx)
 	if err != nil || rows == 0 {
+		if rows == 0 {
+			A.Logger.Error(gorm.ErrRecordNotFound)
+			return gorm.ErrRecordNotFound
+		}
 		A.Logger.Error(err)
 		return err
 	}
@@ -38,8 +42,8 @@ func (A *AnswersRepo) DeleteByID(ID int) error {
 func (A *AnswersRepo) GetByID(ID uint) (*answers.Answer, error) {
 	A.Logger.Info("Getting answer by ID")
 	var Answer answers.Answer
-	res := A.DB.DB.First(&Answer, ID)
-	if res.Error != nil || res.RowsAffected == 0 {
+	res := A.DB.DB.Find(&Answer, ID)
+	if res.Error != nil {
 		A.Logger.Error(res.Error)
 		return nil, res.Error
 	}
@@ -58,6 +62,7 @@ func (A *AnswersRepo) Create(Ans *answers.Answer, ID uint) (uint, error) {
 		}
 		return 0, res.Error
 	}
+	Ans.Question_id = ID
 	result := A.DB.DB.Create(Ans)
 	if result.Error != nil {
 		A.Logger.Error(result.Error)

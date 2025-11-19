@@ -1,0 +1,159 @@
+type: collection.insomnia.rest/5.0
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1763560239262
+  modified: 1763560239262
+  description: ""
+collection:
+  - url: localhost:8080/questions/
+    name: CreateQuestion
+    meta:
+      id: req_e71644776d984584844cbe02d95ad1d9
+      created: 1763560396682
+      modified: 1763565954215
+      isPrivate: false
+      description: ""
+      sortKey: -1763560396682
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"Text": "I am quest"}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/questions/33/answers/
+    name: CreateAnswer
+    meta:
+      id: req_e9886fe97c114acf8d48d33c519663e2
+      created: 1763562050632
+      modified: 1763566001796
+      isPrivate: false
+      description: ""
+      sortKey: -1763562050632
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {"UserID": "soaosoasdaaosa",
+        "Text":"ansdadsasassasasa"}
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/answers/42
+    name: DeleteAnswer
+    meta:
+      id: req_bd7b5aca1d134ceb8b2318e0e2ad5fe8
+      created: 1763563014966
+      modified: 1763563581560
+      isPrivate: false
+      description: ""
+      sortKey: -1763563014966
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/questions/28
+    name: DeleteQuestion
+    meta:
+      id: req_c8dc61b4637f4e128a0c0f349a5265a0
+      created: 1763563586346
+      modified: 1763564983534
+      isPrivate: false
+      description: ""
+      sortKey: -1763563586346
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/answers/69
+    name: GetAnswer
+    meta:
+      id: req_6a5ff5d244da463186cb38aa43413452
+      created: 1763564113371
+      modified: 1763566221555
+      isPrivate: false
+      description: ""
+      sortKey: -1763563849858.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/questions/
+    name: GetQuestions
+    meta:
+      id: req_dd180494e6e34990964ffb1c54b15b21
+      created: 1763564949894
+      modified: 1763566789525
+      isPrivate: false
+      description: ""
+      sortKey: -1763564949894
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1763560389190
+    modified: 1763560389190
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1763560389188
+    modified: 1763560389188
+    isPrivate: false

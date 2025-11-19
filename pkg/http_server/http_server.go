@@ -18,6 +18,6 @@ func NewServer(Config config.Config) *HttpServer {
 func (S *HttpServer) Map(path string, Handler func(w http.ResponseWriter, r *http.Request)) {
 	S.Server.HandleFunc(path, Handler)
 }
-func (S *HttpServer) Run() {
-	http.ListenAndServe(S.Port, S.Server)
+func (S *HttpServer) Run() error {
+	return http.ListenAndServe(S.Port, S.Server)
 }

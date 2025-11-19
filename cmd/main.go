@@ -14,5 +14,8 @@ func main() {
 		return
 	}
 	App := app.NewApp(*Cfg, *Log)
+	if App == nil {
+		return
+	}
 	App.Run()
 }

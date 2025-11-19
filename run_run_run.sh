@@ -1,5 +1,4 @@
 go mod tidy
-docker compose up --no-start
-docker compose start db
+docker compose up db -d
 goose -dir ./migrations -table goose_migrations up
-#docker start app
+#docker start q-a-app

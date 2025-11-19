@@ -18,12 +18,13 @@ type App struct {
 	Logger    logger.Logger
 }
 
-func NewApp(Cfg config.Config, Logger logger.Logger) App {
+func NewApp(Cfg config.Config, Logger logger.Logger) *App {
 	HttpServ := httpserver.NewServer(Cfg)
 	Logger.Debug("Http Ready")
 	DB, err := postgresql.NewDB(Cfg)
 	if err != nil {
 		Logger.Error(err)
+		return nil
 	}
 	Logger.Debug("DB ready")
 	Ans := a_usecase.NewAnsUseCase(DB, Logger)
@@ -35,10 +36,10 @@ func NewApp(Cfg config.Config, Logger logger.Logger) App {
 	HttpServ.Map("POST /questions/{id}/answers/", Ans.AddAnswer)
 	HttpServ.Map("DELETE /answers/{id}", Ans.Delete)
 	HttpServ.Map("DELETE /questions/{id}", Q.Delete)
-	return App{Server: *HttpServ, Logger: Logger, Answers: Ans, Qusetions: Q}
+	return &App{Server: *HttpServ, Logger: Logger, Answers: Ans, Qusetions: Q}
 }
 
 func (A *App) Run() {
 	A.Logger.Info("Running")
-	A.Server.Run()
+	A.Logger.Error(A.Server.Run())
 }
